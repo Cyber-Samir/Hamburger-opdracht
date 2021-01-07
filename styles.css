@@ -3,31 +3,70 @@
     --menu-bar-height: 10px;
 }
 
-#menu {
-    background-color: #D84282;
-    position: relative;
-    width: var(--menu-bar-width);
-    height: var(--menu-bar-height);
-    margin: 100px;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: black;
+    padding: 0;
+    margin: 0;
 }
 
-#menu::before,
-#menu::after {
-    background-color: #D84282;
-    display: block;
-    content: "";
-    width: var(--menu-bar-width);
-    height: var(--menu-bar-height);
+input[type="checkbox"] {
+   -webkit-appearance: none;
+    visibility: hidden;
+    display: none;
+}
+
+.menu-bar {
+   position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-bar .middle {
+    height: 6px;
+    width: 80px;
+    background-color: hotpink;
     position: absolute;
+    transition: 0.3s ease-in-out;
 }
 
-#menu::before {
-    left: 0;
-    top: -20px;
+.menu-bar .top {
+    bottom: 15px;
+    height: 6px;
+    width: 80px;
+    background-color: hotpink;
+    position: absolute;
+    transition: 0.3s ease-in-out;
 }
 
-#menu::after {
-    left: 0;
+.menu-bar .bottom {
     top: 20px;
+    height: 6px;
+    width: 80px;
+    background-color: hotpink;
+    position: absolute;
+    transition: 0.3s ease-in-out;
 }
 
+input[type="checkbox"]:hover ~ .menu-bar .top {
+    transform: rotate(-45deg);
+    width: 70px;
+    transform-origin: right;
+    top: -25px;
+}
+
+input[type="checkbox"]:hover ~ .menu-bar .bottom {
+    transform: rotate(45deg);
+    width: 70px;
+    transform-origin: right;
+    top: 25px;
+}
+
+input[type="checkbox"]:hover ~ .menu-bar .middle {
+    transform: translateX(20px);
+    opacity: 0;
+}
